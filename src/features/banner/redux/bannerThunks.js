@@ -8,18 +8,14 @@ function fetchbannerMovies(){
 
     return async (dispatch) => {
       //const url = `${BASE_URL}trending/movie/day?api_key=${API_KEY}`;
-        const url = "/.netlify/functions/movies";
+        // const url = "/.netlify/functions/movies";
       dispatch(setLoader());
       try {
-        const response = await axios.get(url);
-        let results = response?.data?.results || [];
-        // if serverless endpoint failed or returned nothing, fall back to client-side fetch
-        if (results.length === 0) {
-          const direct = await axios.get(
-            `${BASE_URL}trending/movie/day?api_key=${API_KEY}`
-          );
-          results = direct?.data?.results || [];
-        }
+        // Temporarily skip function and go direct for debugging
+        const direct = await axios.get(
+          `${BASE_URL}trending/movie/day?api_key=${API_KEY}`
+        );
+        const results = direct?.data?.results || [];
 
         const top5movie = results.slice(0, 5);
         dispatch(
