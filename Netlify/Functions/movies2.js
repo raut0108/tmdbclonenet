@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-export async function handler() {
+export async function handler(event) {
   // ensure API key is provided on Netlify
   const key = process.env.TMDB_KEY;
   if (!key) {
@@ -11,10 +11,12 @@ export async function handler() {
     };
   }
 
+  const page = event.queryStringParameters?.page || 1;
+
   try {
     // Call TMDB API from Netlify server (outside India)
     const res = await fetch(
-      `https://api.themoviedb.org/3/trending/movie/day`
+      `https://api.themoviedb.org/3/discover/movie?api_key=${key}&page=${page}`
     );
 
     const data = await res.json();
