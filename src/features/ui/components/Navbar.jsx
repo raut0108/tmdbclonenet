@@ -7,20 +7,20 @@ function NavBar() {
   return (
    
   //Here we will use NavLink to add active class to the current link
-  <div className='flex space-x-8 items-center pl-4 pr-4 py-2'>
-    <NavLink to={'/'}> <img className='w-[clamp(20px,50vw,50px)]' src={logo} alt="Logo" /> </NavLink>
+  <header className='flex flex-wrap justify-between items-center w-full px-4 py-2'>
+    <NavLink to={'/'}> <img className='w-8 sm:w-10 md:w-12' src={logo} alt="Logo" /> </NavLink>
      
-     <div className='text-blue-500 text-3xl font-bold space-x-8'>
-      <NavLink  to={'/'} style={({isActive})=>{
-        return { textDecoration : isActive?'underline':'none'}
-      }}> Movies </NavLink>
+     <nav className='text-blue-500 text-lg sm:text-xl md:text-2xl font-bold space-x-4 sm:space-x-8'>
+      <NavLink to={'/'} style={({isActive})=>({
+        textDecoration : isActive?'underline':'none'
+      })}>Movies</NavLink>
 
-      <NavLink  to={'watchlist'} style={({isActive})=>{
-        return { textDecoration : isActive? 'underline' : 'none' }
-      }}>Watchlist</NavLink>
-    </div>
+      <NavLink to={'watchlist'} style={({isActive})=>({
+        textDecoration : isActive? 'underline' : 'none'
+      })}>Watchlist</NavLink>
+    </nav>
 
-  </div>
+  </header>
 ) 
 }
 

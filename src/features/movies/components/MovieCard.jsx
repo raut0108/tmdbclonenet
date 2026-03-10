@@ -25,26 +25,26 @@ function MovieCard(props) {
   
   return (
     <>
-    <div className="flex flex-wrap justify-center gap-10">
+    <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-10">
     {
       movies.map((movi, index) => {
         return (
-          <div key={index} className="hover:scale-110 duration-300 hover:cursor-pointer">
-            <div className="h-[30vh] w-[200px] bg-center bg-cover rounded-xl flex flex-col items-center" 
+          <div key={index} className="hover:scale-105 transition-transform duration-300 cursor-pointer">
+            <div className="h-auto w-40 sm:w-48 md:w-52 lg:w-60 aspect-[2/3] bg-center bg-cover rounded-xl flex flex-col items-center" 
             style={{ backgroundImage: `url(${IMAGE_BASE_URL}${movi?.poster_path})` }}>
               {
                  ContextData.isInWatchList(movi) ?
                  (
-                   <div className="flex m-4 h-8 w-8 justify-center items-center rounded-xl bg-gray-900/80" onClick={()=>ContextData.removeFromWatchList(movi)}>&#10060;</div>  
+                   <div className="flex m-2 h-8 w-8 justify-center items-center rounded-xl bg-gray-900/80" onClick={()=>ContextData.removeFromWatchList(movi)}>&#10060;</div>  
                  )
                   :
                  (
-                   <div className="flex m-4 h-8 w-8 justify-center items-center rounded-xl bg-gray-900/80" onClick={()=>ContextData.addToWatchList(movi)}>&#128525;</div>
+                   <div className="flex m-2 h-8 w-8 justify-center items-center rounded-xl bg-gray-900/80" onClick={()=>ContextData.addToWatchList(movi)}>&#128525;</div>
                  )
               }
               
             </div>
-            <div className="mt-3 w-[200PX] text-white text-center text-sm p-2 rounded-lg bg-black/70 font-bold" onClick={()=>handleOpenModal(movi)}>{movi.title}</div>
+            <div className="mt-2 w-40 sm:w-48 md:w-52 lg:w-60 text-white text-center text-xs sm:text-sm md:text-base p-2 rounded-lg bg-black/70 font-bold" onClick={()=>handleOpenModal(movi)}>{movi.title}</div>
           </div>
         );
       })

@@ -8,11 +8,12 @@ function WatchlistTable(Prop) {
     const {handleDecendingSortRatings,handleAscendingSortRatings,removeMovie,search,currGenere,watchList} = Prop;
     
   return (
-    <table className="w-full border-collapse bg-white text-left text-sm text-gray-500">
+    <div className="overflow-x-auto">
+    <table className="w-full min-w-[600px] border-collapse bg-white text-left text-sm text-gray-500">
             <thead>
               <tr className="bg-gray-400">
                 <th className="px-6 py-4 font-medium text-gray-900">Name</th>
-                <th className="px-6 py-4 font-medium text-gray-900">
+                <th className="px-6 py-4 font-medium text-gray-900 hidden sm:table-cell">
                   <div className="flex gap-2">
                     <div className="cursor-pointer">
                       <ArrowUp
@@ -31,13 +32,12 @@ function WatchlistTable(Prop) {
                     </div>
                   </div>
                 </th>
-                <th className="px-6 py-4 font-medium text-gray-900">
+                <th className="px-6 py-4 font-medium text-gray-900 hidden md:table-cell">
                   Popularity
                 </th>
-                <th className="px-6 py-4 font-medium text-gray-900">Genere</th>
+                <th className="px-6 py-4 font-medium text-gray-900 hidden lg:table-cell">Genere</th>
                 <th className="px-6 py-4 font-medium text-gray-900">
-                  {" "}
-                  Action Button
+                  Action
                 </th>
               </tr>
             </thead>
@@ -63,20 +63,19 @@ function WatchlistTable(Prop) {
                   .map((movi, index) => {
                     return (
                       <tr key={index}>
-                        <td className="flex items-center px-6 py-4 font-normaltext-gry-900">
+                        <td className="flex items-center px-4 sm:px-6 py-4 font-normal text-gray-900">
                           <img
                             src={`${IMAGE_BASE_URL}${movi?.poster_path}`}
                             alt="Movie Poster"
-                            className="h-[6rem] w-[10rem] object-cover rounded-md"
+                            className="h-24 w-16 sm:h-32 sm:w-20 object-cover rounded-md"
                           />
                           <div className="font-medium text-gray-700 text-sm pl-2">
-                            {" "}
-                            {movi?.title}{" "}
-                          </div>{" "}
+                            {movi?.title}
+                          </div>
                         </td>
-                        <td className="px-14 py-4">{movi?.vote_average}</td>
-                        <td className="pl-6 py-4">{movi?.popularity}</td>
-                        <td className="pl-6 py-4">
+                        <td className="px-6 py-4 hidden sm:table-cell">{movi?.vote_average}</td>
+                        <td className="pl-6 py-4 hidden md:table-cell">{movi?.popularity}</td>
+                        <td className="pl-6 py-4 hidden lg:table-cell">
                           {movi.genre_ids.map((id, index) => {
                             const genre = genreids[id];
                             const isActive = currGenere === genre;
@@ -106,6 +105,7 @@ function WatchlistTable(Prop) {
                   })}
             </tbody>
           </table>
+    </div>
   )
 }
 

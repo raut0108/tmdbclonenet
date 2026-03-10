@@ -21,6 +21,11 @@ function MoviesPage() {
         dispatch(fetchTrendingMovies(pageNo))
   }, [pageNo,dispatch]);
 
+  // SEO: update document title
+  useEffect(() => {
+    document.title = "Trending Movies | TMDB App";
+  }, []);
+
  
   // Component
   return (
@@ -31,9 +36,9 @@ function MoviesPage() {
         err ? (<ErrorFallback err={err}/> )
         :
         <div>
-          <div className="text-2xl font-bold text-center m-5">
+          <h1 className="text-2xl md:text-3xl font-bold text-center m-5">
             Trending Movies
-          </div>
+          </h1>
           <MovieCard movies={movies} />
           <Pagination
             handlePrev={()=>dispatch(handlePrevious())}

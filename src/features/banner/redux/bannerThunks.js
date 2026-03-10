@@ -7,7 +7,8 @@ function fetchbannerMovies(){
     const IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
 
     return async (dispatch) => {
-      const url = `${BASE_URL}trending/movie/day?api_key=${API_KEY}`;
+      //const url = `${BASE_URL}trending/movie/day?api_key=${API_KEY}`;
+        const url = "/.netlify/functions/movies"
       dispatch(setLoader())
       axios.get(url).then((response) => {
        const top5movie = response?.data?.results?.slice(0, 5);

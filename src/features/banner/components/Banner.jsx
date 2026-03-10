@@ -44,14 +44,14 @@ function Banner() {
             // true then only the right side will be executed
 
             top5Movies.length > 0 && (
-              <div className="relative h-[50vh] md:h-[75vh]  bg-cover bg-center">
+              <div className="relative h-[50vh] md:h-[75vh] bg-cover bg-center">
                 <div
                   className="h-full bg-cover bg-center flex items-end transition-all duration-500 ease-in-out"
                   style={{
                     backgroundImage: `url(${top5Movies[currentIndex]?.bannerImage})`,
                   }}
                 >
-                  <div className="text-white w-full  text-center text-2xl p-4 bg-black/50">
+                  <div className="text-white w-full text-center text-lg sm:text-2xl md:text-3xl p-4 bg-black/50">
                     {top5Movies[currentIndex]?.title}
                   </div>
                 </div>

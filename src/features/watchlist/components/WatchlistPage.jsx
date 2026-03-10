@@ -19,6 +19,11 @@ function WatchlistPage() {
   const [showModel, setShowModel] = useState(false);
   const watchListData = useContext(watchListContext);
 
+  // set page title for SEO
+  useEffect(() => {
+    document.title = "My Watchlist | TMDB App";
+  }, []);
+
   
 
   useEffect(() => {
@@ -54,12 +59,13 @@ function WatchlistPage() {
     {
 
       watchListData.watchList.length > 0 ? (
-        <div className="mx-5 my-10">
+        <main className="mx-5 my-10 px-4">
+          <h1 className="text-2xl md:text-3xl font-bold text-center mb-4">My Watchlist</h1>
           <button
-            className="flex justify-center items-center bg-blue-400 hover:bg-blue-500 transition duration-300 h-[3rem] w-[14rem] text-white font-bold border border-blue-700 rounded-xl shadow-md cursor-pointer mx-[43%] my-4"
+            className="mx-auto block bg-blue-400 hover:bg-blue-500 transition duration-300 h-12 sm:h-14 w-40 sm:w-60 text-white font-bold border border-blue-700 rounded-xl shadow-md cursor-pointer my-4"
             onClick={() => setShowModel((prevState) => !prevState)}
           >
-            Recommed Movies
+            Recommend Movies
           </button>
           {showModel && (
             <MoviRecommendations
@@ -81,7 +87,7 @@ function WatchlistPage() {
             search={search}
             removeMovie={watchListData.removeFromWatchList}
           />
-        </div>
+        </main>
       ) : (
         <WatchlistEmptyState />
       )}

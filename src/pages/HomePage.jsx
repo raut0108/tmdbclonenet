@@ -3,11 +3,15 @@ import Banner from '../features/banner/components/Banner';
 import MoviesPage from '../features/movies/components/MoviesPage';
 
 const HomePage = () => {
+  React.useEffect(() => {
+    document.title = "Home | TMDB App";
+  }, []);
+
   return (
-    <div>
+    <main>
       <Banner />
       <MoviesPage />
-    </div>
+    </main>
   );
 };
 

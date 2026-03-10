@@ -42,7 +42,7 @@ function Modal({ movie, handleCloseModal }) {
 
 
   return (
-    <div className="bg-white/45 rounded-lg shadow-lg p-8 max-w-[35vw] max-h-[90vh] overflow-y-auto flex flex-col">
+    <div className="bg-white/45 rounded-lg shadow-lg p-6 max-w-full sm:max-w-[35vw] max-h-[90vh] overflow-y-auto flex flex-col">
       {
         loader ?
         (
